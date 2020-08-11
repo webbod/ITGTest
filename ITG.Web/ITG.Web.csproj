@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ITG.DataSources\ITG.DataSources.csproj" />
+    <ProjectReference Include="..\ITG.Interfaces\ITG.Interfaces.csproj" />
+    <ProjectReference Include="..\ITG.Models\ITG.Models.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Data\" />
+    <Folder Include="wwwroot\images\" />
+  </ItemGroup>
+
+</Project>
