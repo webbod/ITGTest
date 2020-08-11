@@ -52,8 +52,7 @@ namespace ITG.Web.Controllers
             var model = new NewsFeedViewModel
             {
                 CurrentPage = startingPage,
-                MetaData = _DataSource.MetaData,
-                Articles = _DataSource.GetPage(startingPage)
+                MetaData = _DataSource.MetaData
             };
 
             return View(model);
@@ -65,11 +64,9 @@ namespace ITG.Web.Controllers
         public JsonResult Page(int id = 0)
         {
             IEnumerable<Article> output = null;
-
-            if (id < _DataSource.MetaData.PageCount)
-            {
-                output = _DataSource.GetPage(id);
-            }
+            
+            output = _DataSource.GetPage(id);
+            
             return Json(output, JsonRequestBehavior.AllowGet);
         }
 

@@ -11,6 +11,5 @@ namespace ITG.Web.Models
     {
         public ArticleListMetaData MetaData { get; set; }
         public int CurrentPage { get; set; }
-        public List<Article> Articles { get; set; }
     }
 }

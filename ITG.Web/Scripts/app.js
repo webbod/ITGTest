@@ -44,7 +44,7 @@ var loadMoreArticles = () => {
     
     $.getJSON(url, (data) => {
         $("#loading").addClass("hidden");
-        if(data !== null){
+        if(data !== null && data.length > 0){
             $.each(data, (index, article) => {
                 var html = articleTemplate(article);
                 $("#articleContainer").append(html);

@@ -14,7 +14,8 @@ namespace ITG.DataSources
     {
         //TODO move these into the config file
         private string _Path = String.Empty;
-        private int _PageSize = 0;
+
+        private List<Article> _Data;
 
         public TestDataSource() : base()
         {
@@ -23,10 +24,18 @@ namespace ITG.DataSources
         public override void Configure(Models.Configuration.DataSourceConfiguration config)
         {
             _Path = config.ConnectionSettings;
-            _PageSize = config.PageSize;
+            
+            _MetaData = new ArticleListMetaData { PageSize = config.PageSize };
+        }
 
-            // this datasource is static and can be loaded immediately
-            Load();
+        public override List<Models.Entities.Article> GetPage(int pageNumber = 0)
+        {
+            if (_Data == default(List<Article>) || !_Data.Any())
+            {
+                Load();
+            }
+
+            return _Data.Skip(pageNumber * _MetaData.PageSize).Take(_MetaData.PageSize).ToList();
         }
 
         public override void Load()
@@ -43,7 +52,7 @@ namespace ITG.DataSources
                 _Data = JsonConvert.DeserializeObject<List<Article>>(json);
             }
 
-            _MetaData = new ArticleListMetaData { ArticleCount = _Data.Count(), PageSize = _PageSize };
+            _MetaData.ArticleCount = _Data.Count();
         }
     }
 }

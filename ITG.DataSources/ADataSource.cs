@@ -13,24 +13,13 @@ namespace ITG.DataSources
     public abstract class ADataSource : IDataSource
     {
         protected ArticleListMetaData _MetaData;
-        protected List<Article> _Data;
 
-        public ADataSource()
-        {
-
-        }
-
-        public virtual List<Models.Entities.Article> GetPage(int pageNumber = 0)
-        {
-            // returning an IEnumerable rather than an IQueryable breaks the link between the 
-            // returned data and the underlying dataset - influenced by the Repository pattern
-            return _Data.Skip(pageNumber * _MetaData.PageSize).Take(_MetaData.PageSize).ToList();
-        }
-
-        public Models.MetaData.ArticleListMetaData MetaData
+        public ArticleListMetaData MetaData
         {
             get { return _MetaData; }
         }
+
+        public abstract List<Models.Entities.Article> GetPage(int pageNumber = 0);
 
         public abstract void Load();
 
