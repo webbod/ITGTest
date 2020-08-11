@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using ITG.Interfaces;
+﻿using ITG.Interfaces;
 using ITG.Models.Configuration;
-using System.Configuration;
-
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using System;
 
 namespace ITG.Web.Controllers
 {
@@ -14,20 +10,20 @@ namespace ITG.Web.Controllers
     {
         protected IDataSource _DataSource;
 
-        public ABaseDataSourceController(IDataSource dataSource)
+        public ABaseDataSourceController(IDataSource dataSource, IConfiguration configuration)
         {
-            ConfigureDataSource(dataSource);            
+            ConfigureDataSource(dataSource, configuration);            
         }
 
-        protected void ConfigureDataSource(IDataSource dataSource)
+        protected void ConfigureDataSource(IDataSource dataSource, IConfiguration configuration)
         {
             // get the configuration infromation from web.config
-            var connectionSettings = ConfigurationManager.AppSettings["DataSource.ConnectionSettings"];
-            var pageSize = Int32.Parse(ConfigurationManager.AppSettings["DataSource.PageSize"]);
+            var connectionSettings = configuration.GetSection("DataSource").GetSection("ConnectionSettings").Value;
+            var pageSize = Int32.Parse(configuration.GetSection("DataSource").GetSection("PageSize").Value);
 
             if (string.IsNullOrEmpty(connectionSettings) || pageSize < 1)
             {
-                throw new ConfigurationErrorsException();
+                throw new ArgumentException();
             }
 
             dataSource.Configure(new DataSourceConfiguration { ConnectionSettings = connectionSettings, PageSize = pageSize });

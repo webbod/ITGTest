@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using Newtonsoft.Json;
-using ITG.Interfaces;
+﻿using ITG.Interfaces;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 
 namespace ITG.Web.Controllers
 {
@@ -12,26 +8,20 @@ namespace ITG.Web.Controllers
     {
 
 
-        public NewsFeedController(IDataSource dataSource) : base(dataSource)
+        public NewsFeedController(IDataSource dataSource, IConfiguration configuration) : base(dataSource, configuration)
         {
         }
 
-        //
-        // GET: /NewsFeed/
-
-        public ActionResult Index()
+        public IActionResult Index()
         {
             return View();
         }
 
-        //
-        // GET: /NewsFeed/Page/5
-
         public JsonResult Page(int id = 0)
         {
             var output = _DataSource.GetPage(id);
-            
-            return Json(output, JsonRequestBehavior.AllowGet);
+
+            return Json(output);
         }
 
     }

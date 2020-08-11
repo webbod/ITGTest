@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
 using ITG.Models.Entities;
-using Newtonsoft.Json;
+using System.Text.Json;
 using ITG.Models.MetaData;
 using ITG.Models.Configuration;
 
@@ -32,8 +30,8 @@ namespace ITG.DataSources
 
             if (!File.Exists(_Path))
             {
-                // String interpolation was only introdced in C# 6.0
-                throw new FileNotFoundException(string.Format("The data file was not found at :{0}", _Path));
+                
+                throw new FileNotFoundException($"The data file was not found at :{_Path}");
             }
         }
 
@@ -58,7 +56,9 @@ namespace ITG.DataSources
             using (StreamReader r = new StreamReader(_Path))
             {
                 string json = r.ReadToEnd();
-                _Data = JsonConvert.DeserializeObject<List<Article>>(json);
+
+                // switched to using native dotnet core JsonSerializer
+                _Data = JsonSerializer.Deserialize<List<Article>>(json);
             }
 
             _MetaData.ArticleCount = _Data.Count();

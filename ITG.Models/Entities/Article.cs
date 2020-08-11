@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ITG.Models.Entities
 {
@@ -14,12 +10,11 @@ namespace ITG.Models.Entities
         public string ImageUrl {get; set;}
         public string Body {get; set;}
         public DateTime Date { get; set;}
-        public string Day { get {  return Date.ToString("dd"); } }
-        public string Month { get { return Date.ToString("MMM"); } }
-        public string Year { get { return Date.ToString("yyyy"); } }
-        public string FormattedDate
-        {
-            get { return Date.ToString("dd MMM yyyy"); }
-        }
+
+        public string Day => Date.ToString("dd"); 
+        public string Month => Date.ToString("MMM");
+        public string Year => Date.ToString("yyyy");
+        public string FormattedDate => Date.ToString("dd MMM yyyy");
+
     }
 }

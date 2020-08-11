@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using ITG.Interfaces;
 using ITG.Models.Entities;
 using ITG.Models.MetaData;
@@ -14,13 +10,10 @@ namespace ITG.DataSources
     {
         protected ArticleListMetaData _MetaData;
 
-        public ArticleListMetaData MetaData
-        {
-            get { return _MetaData; }
-        }
+        public ArticleListMetaData MetaData => _MetaData;
 
-        public abstract List<Models.Entities.Article> GetPage(int pageNumber = 0);
-
+        public abstract List<Article> GetPage(int pageNumber = 0);
+    
         public abstract void Configure(DataSourceConfiguration config);
 
         // this is public, but not included in IDataSource - there may be odd cases
