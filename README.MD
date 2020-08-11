@@ -1,6 +1,6 @@
 # ITG Technical test
 
-Render a newsfeed, dynamically loading pages of articles
+Render a newsfeed, dynamically loading pages of articles - target MVC4 with JQuery
 
 ## ITG.Models
 *  _Configuration.DataSourceConfiguration_ - manages page size and connnect settings
