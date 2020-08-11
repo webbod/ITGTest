@@ -7,17 +7,17 @@
     ViewBag.Title = "News Feed Demo";
 }
 
-<div class="container">
-    <div class="header">
+<section class="container">
+    <header>
         <h1>News Feed</h1>
-    </div>
-    <div id="articleContainer"></div>
-    <div class="footer">
+    </header>
+    <section id="articleContainer"></section>
+    <footer>
         <button id="loadMore" class="hidden">Load More</button>
         <div id="loading">[ loading ]</div>
         <div id="allArticlesLoaded" class="hidden">[ end of feed ]</div>
-    </div>
-</div>
+    </footer>
+</section>
 
 @section scripts {
     <script src="~/Scripts/app.js"></script>

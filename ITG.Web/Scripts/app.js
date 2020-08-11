@@ -14,13 +14,13 @@ var mode = keepOpen;
 
 //  renders an article in HTML
 const articleTemplate = (article) => {
-    var output = `<div class="article">
-        <div class="article-date" data-year="${article.Year}" data-month="${article.Month}">${article.Day}</div>
+    var output = `<article class="article">
+        <time class="article-date" datetime="${article.Year}-${article.Month}-${article.Day}" data-year="${article.Year}" data-month="${article.Month}">${article.Day}</time>
         <div class="article-headline">${article.Headline}</div>
         <div class="article-image" style="background-image:url(${article.ImageUrl});"></div>
         <div class="article-summary">${article.Summary}</div>
         <div class="article-body">${article.Body}</div>
-    </div>`;
+    </article>`;
 
     return output;
 }
