@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuration\DataSourceConfiguration.cs" />
     <Compile Include="MetaData\ArticleListMetaData.cs" />
     <Compile Include="Entities\Article.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

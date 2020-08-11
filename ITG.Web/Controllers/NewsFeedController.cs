@@ -8,6 +8,9 @@ using ITG.Models.Entities;
 using ITG.Models.MetaData;
 using Newtonsoft.Json;
 using ITG.Web.Models;
+using ITG.Models.Configuration;
+using System.Configuration;
+using System.IO;
 
 namespace ITG.Web.Controllers
 {
@@ -15,9 +18,28 @@ namespace ITG.Web.Controllers
     {
         private IDataSource _DataSource;
 
+        private void ConfigureDataSource(IDataSource dataSource)
+        {
+            // get the configuration infromation from web.config
+            var fileName = ConfigurationManager.AppSettings["Articles.TestDataSourceFile"];
+            var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,"App_Data", fileName);
+            var pageSize = Int32.Parse(ConfigurationManager.AppSettings["Articles.PageSize"]);
+
+            if (string.IsNullOrEmpty(fileName) || pageSize < 1)
+            {
+                throw new ConfigurationErrorsException();
+            }
+
+            var config = new DataSourceConfiguration{ ConnectionSettings = path, PageSize = pageSize};
+
+            dataSource.Configure(config);
+
+            _DataSource = dataSource;
+        }
+
         public NewsFeedController(IDataSource dataSource)
         {
-            _DataSource = dataSource;
+            ConfigureDataSource(dataSource);            
         }
 
         //

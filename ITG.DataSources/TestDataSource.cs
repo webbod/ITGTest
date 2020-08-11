@@ -16,15 +16,20 @@ namespace ITG.DataSources
         private string _Path = String.Empty;
         private int _PageSize = 0;
 
-        public TestDataSource(string path, int pageSize)
+        public TestDataSource() : base()
         {
-            _Path = path;
-            _PageSize = pageSize;
+        }
 
+        public override void Configure(Models.Configuration.DataSourceConfiguration config)
+        {
+            _Path = config.ConnectionSettings;
+            _PageSize = config.PageSize;
+
+            // this datasource is static and can be loaded immediately
             Load();
         }
 
-        protected override void Load()
+        public override void Load()
         {
             if (!File.Exists(_Path))
             {

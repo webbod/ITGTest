@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ITG.Models.Entities;
 using ITG.Models.MetaData;
+using ITG.Models.Configuration;
 
 namespace ITG.Interfaces
 {
@@ -12,5 +13,6 @@ namespace ITG.Interfaces
     {
         ArticleListMetaData MetaData { get; }
         List<Article> GetPage(int pageNumber = 0);
+        void Configure(DataSourceConfiguration config);
     }
 }

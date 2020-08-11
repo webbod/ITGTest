@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using ITG.Interfaces;
 using ITG.Models.Entities;
 using ITG.Models.MetaData;
+using ITG.Models.Configuration;
 
 namespace ITG.DataSources
 {
@@ -19,7 +20,7 @@ namespace ITG.DataSources
 
         }
 
-        public List<Models.Entities.Article> GetPage(int pageNumber = 0)
+        public virtual List<Models.Entities.Article> GetPage(int pageNumber = 0)
         {
             // returning an IEnumerable rather than an IQueryable breaks the link between the 
             // returned data and the underlying dataset - influenced by the Repository pattern
@@ -31,7 +32,9 @@ namespace ITG.DataSources
             get { return _MetaData; }
         }
 
-        protected abstract void Load();
+        public abstract void Load();
+
+        public abstract void Configure(DataSourceConfiguration config);
 
     }
 }
