@@ -7,29 +7,39 @@ using System.IO;
 using ITG.Models.Entities;
 using Newtonsoft.Json;
 using ITG.Models.MetaData;
+using ITG.Models.Configuration;
 
 namespace ITG.DataSources
 {
-    public class TestDataSource : ADataSource
+    public class FileDataSource : ADataSource
     {
-        //TODO move these into the config file
         private string _Path = String.Empty;
 
         private List<Article> _Data;
 
-        public TestDataSource() : base()
+        public FileDataSource() : base()
         {
         }
 
-        public override void Configure(Models.Configuration.DataSourceConfiguration config)
+        private void ConfigurePath(DataSourceConfiguration config)
         {
             // ensure the path to the file is in the correct format
-            var path = config.ConnectionSettings.Replace('/','\\');
-            path = path.Substring(0,1) == "~" ? path.Substring(1) : path;
-            path = path.Substring(0,1) == "\\" ? path.Substring(1) : path;
+            var path = config.ConnectionSettings.Replace('/', '\\');
+            path = path.Substring(0, 1) == "~" ? path.Substring(1) : path;
+            path = path.Substring(0, 1) == "\\" ? path.Substring(1) : path;
 
             _Path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, path);
-            
+
+            if (!File.Exists(_Path))
+            {
+                // String interpolation was only introdced in C# 6.0
+                throw new FileNotFoundException(string.Format("The data file was not found at :{0}", _Path));
+            }
+        }
+
+        public override void Configure(DataSourceConfiguration config)
+        {
+            ConfigurePath(config);
             _MetaData = new ArticleListMetaData { PageSize = config.PageSize };
         }
 
@@ -45,12 +55,6 @@ namespace ITG.DataSources
 
         public override void Load()
         {
-            if (!File.Exists(_Path))
-            {
-                // String interpolation was only introdced in C# 6.0
-                throw new FileNotFoundException(string.Format("The data file was not found at :{0}", _Path));
-            }
-
             using (StreamReader r = new StreamReader(_Path))
             {
                 string json = r.ReadToEnd();

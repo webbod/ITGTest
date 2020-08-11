@@ -46,7 +46,7 @@
   <ItemGroup>
     <Compile Include="ADataSource.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TestDataSource.cs" />
+    <Compile Include="FileDataSource.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ITG.Interfaces\ITG.Interfaces.csproj">

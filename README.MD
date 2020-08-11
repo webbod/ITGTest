@@ -12,7 +12,7 @@ Render a newsfeed, dynamically loading pages of articles
 
 ## ITG.DataSources
 *  _ADataSource_ implements _IDataSource_ and acts as a template for concrete DataSource classes
-*  _TestDataSource_ inherits from _ADataSource_ consumes a Json document, expects the connection settings to point to a file hosted in the site 
+*  _FileDataSource_ inherits from _ADataSource_ consumes a Json document, expects the connection settings to point to a file hosted in the site 
 
 ## ITG.Web
 *  _Bootstrapper.cs_ - manages dependency injection for IDataSource

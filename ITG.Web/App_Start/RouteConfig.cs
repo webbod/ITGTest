@@ -13,6 +13,8 @@ namespace ITG.Web
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+
+            // Jump directly to the Newsfeed 
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

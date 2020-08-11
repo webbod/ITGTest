@@ -27,10 +27,6 @@ namespace ITG.Web
 
             // e.g. container.RegisterType<ITestService, TestService>();    
 
-
-            // use the TestDataSource in place of IDataSource
-            container.RegisterType<IDataSource, TestDataSource>();
-
             RegisterTypes(container);
 
             return container;
@@ -38,7 +34,8 @@ namespace ITG.Web
 
         public static void RegisterTypes(IUnityContainer container)
         {
-
+            // use the TestDataSource in place of IDataSource
+            container.RegisterType<IDataSource, FileDataSource>();
         }
     }
 }
