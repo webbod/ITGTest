@@ -1,6 +1,6 @@
 # ITG Technical test
 
-Render a newsfeed, dynamically loading pages of articles
+Render a newsfeed, dynamically loading pages of articles - targets dot net core
 
 ## ITG.Models
 *  _Configuration.DataSourceConfiguration_ - manages page size and connnect settings
@@ -15,8 +15,8 @@ Render a newsfeed, dynamically loading pages of articles
 *  _FileDataSource_ inherits from _ADataSource_ consumes a Json document, expects the connection settings to point to a file hosted in the site 
 
 ## ITG.Web
-*  _Bootstrapper.cs_ - manages dependency injection for IDataSource
-*  _Scripts/app.js_ - runs the UX
+*  _Startup.cs_ - manages dependency injection for IDataSource
+*  _wwwroot/js/newsfeed.js_ - runs the UX
 *  _Controllers.ABaseDataSourceController_ - configures an IDataSourceInstance
 *  _Controllers.NewsFeedController_ 
    +  **/Newsfeed/Index** - renders the newsfeed UI 
