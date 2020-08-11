@@ -30,9 +30,7 @@ namespace ITG.Web.Controllers
                 throw new ConfigurationErrorsException();
             }
 
-            var config = new DataSourceConfiguration { ConnectionSettings = connectionSettings, PageSize = pageSize };
-
-            dataSource.Configure(config);
+            dataSource.Configure(new DataSourceConfiguration { ConnectionSettings = connectionSettings, PageSize = pageSize });
 
             _DataSource = dataSource;
         }

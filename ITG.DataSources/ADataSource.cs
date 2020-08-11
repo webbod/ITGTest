@@ -21,9 +21,11 @@ namespace ITG.DataSources
 
         public abstract List<Models.Entities.Article> GetPage(int pageNumber = 0);
 
-        public abstract void Load();
-
         public abstract void Configure(DataSourceConfiguration config);
 
+        // this is public, but not included in IDataSource - there may be odd cases
+        // where a consumer needs to explicitly invoke Load, but it will be obvious
+        // in the code where this is happening and should be discouraged
+        public abstract void Load();
     }
 }

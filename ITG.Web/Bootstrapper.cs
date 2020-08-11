@@ -27,8 +27,8 @@ namespace ITG.Web
 
             // e.g. container.RegisterType<ITestService, TestService>();    
 
-            container.RegisterType<IDataSource, TestDataSource>();
 
+            // use the TestDataSource in place of IDataSource
             container.RegisterType<IDataSource, TestDataSource>();
 
             RegisterTypes(container);
