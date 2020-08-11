@@ -8,14 +8,16 @@
 }
 
 <section class="container">
-    <header>
+    <header role="banner">
         <h1>News Feed</h1>
     </header>
     <section id="articleContainer"></section>
-    <footer>
-        <button id="loadMore" class="hidden">Load More</button>
-        <div id="loading">[ loading ]</div>
-        <div id="allArticlesLoaded" class="hidden">[ end of feed ]</div>
+    <footer role="feed">
+        <button id="loadMore" class="hidden" accesskey="l" role="button">Load More</button>
+        <div role="alert">
+            <span id="loading">[ loading ]</span>
+            <span id="allArticlesLoaded" class="hidden">[ end of feed ]</span>
+        </div>
     </footer>
 </section>
 

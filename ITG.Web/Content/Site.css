@@ -163,6 +163,7 @@ textarea {
         background-position: center;
         background-size: cover;
         height: 400px;
+        width:100%;
         transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
         overflow:hidden;
     }
