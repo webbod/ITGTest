@@ -83,6 +83,7 @@ textarea {
 
     #loadMore {
         font-size:1.25rem;
+        cursor: pointer;
     }
 
     .articleContainer {
@@ -171,7 +172,7 @@ textarea {
     }
 
     .article.expandable {
-        cursor: ns-resize;
+        cursor: pointer;
     }
 
     /* Expanded article behaviours*/
@@ -195,7 +196,7 @@ textarea {
     }
 
     .article.expandable.expanded {
-        cursor: pointer;
+        cursor: ns-resize;
     }
 
     .hidden {
