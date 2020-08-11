@@ -1,0 +1,229 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+
+/* Application specific styling */
+
+
+/* you can barely see this, but it used to glide the 'load more' button into view*/
+body {
+    scroll-behavior: smooth;
+}
+
+
+footer {
+    background: #ccc;
+    padding: 10px;
+    text-align: right;
+    font-size: 1.25rem;
+}
+
+#loadMore {
+    font-size: 1.25rem;
+    cursor: pointer;
+}
+
+.articleContainer {
+    border: #ccc 1px solid;
+}
+
+.article-date {
+    position: relative;
+    display: inline-block;
+    height: 3.5rem;
+    width: 3rem;
+    line-height: 3.4rem;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.25rem;
+    background-color: #fafafa;
+}
+
+    .article-date:before {
+        content: attr(data-month);
+        position: absolute;
+        top: 0px;
+        font-size: 0.75rem;
+        line-height: 1rem;
+        text-align: center;
+        width: 3rem;
+        left: 0px;
+        background-color: #f00;
+        color: #fff;
+        border-radius: 5px 5px 0 0;
+        padding-bottom: 2px;
+    }
+
+    .article-date:after {
+        content: attr(data-year);
+        position: absolute;
+        bottom: 0px;
+        left: 0px;
+        font-size: 0.75rem;
+        line-height: 1rem;
+        text-align: center;
+        width: 3rem;
+        background-color: #f00;
+        color: #fff;
+        border-radius: 0 0 5px 5px;
+        padding-bottom: 2px;
+    }
+
+.article-headline {
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+
+.article-body {
+    margin: 0.5rem 0;
+    max-height: 0px;
+    overflow: hidden;
+    /* CSS doesn't animate to 'auto', but can animate max-height */
+    /* the transition ensures a smooth animation */
+    transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
+}
+
+    .article-body p {
+        margin: 1rem 0;
+    }
+
+        .article-body p:last-child {
+            padding-bottom: 1.5rem;
+            margin-bottom: 1rem;
+            border-bottom: #000 1px dotted;
+        }
+
+.article-image {
+    max-height: 0px;
+    background-position: center;
+    background-size: cover;
+    height: 400px;
+    width: 100%;
+    transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
+    overflow: hidden;
+}
+
+.article:nth-child(2n+1) {
+    background-color: #f4f4f4;
+}
+
+.article.expandable {
+    cursor: pointer;
+}
+
+/* Expanded article behaviours*/
+
+.expanded .article-body,
+.expanded .article-image {
+    max-height: 10000px;
+    /* the transition ensures a smooth animation */
+    transition: max-height 1s ease-in-out;
+}
+
+.expanded .article-headline {
+    padding-bottom: 1rem;
+    border-bottom: #000 1px solid;
+}
+
+.expanded .article-summary {
+    background-color: #000;
+    color: #fff;
+    padding: 5px;
+}
+
+.article.expandable.expanded {
+    cursor: ns-resize;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Article layout */
+
+/* the grid has two columns and four rows*/
+.article {
+    padding: 20px 20px 0px 20px;
+    display: grid;
+    grid-template-columns: 10ch auto;
+    grid-template-rows: auto auto auto auto;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+
+/* spans four rows */
+.article-date {
+    grid-row: 1 / 5;
+    grid-column: 1;
+}
+
+.article-headline {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.article-image {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+.article-summary {
+    grid-column: 2;
+    grid-row: 3;
+}
+
+.article-body {
+    grid-column: 2;
+    grid-row: 4;
+}
+
+
+
+
+
+
+
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+
+
