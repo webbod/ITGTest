@@ -12,13 +12,13 @@ Render a newsfeed, dynamically loading pages of articles
 
 ## ITG.DataSources
 *  _ADataSource_ implements _IDataSource_ and acts as a template for concrete DataSource classes
-*  _TestDataSource_ consumes a Json document, expects the connection settings to point to a file hosted in the site 
+*  _TestDataSource_ inherits from _ADataSource_ consumes a Json document, expects the connection settings to point to a file hosted in the site 
 
 ## ITG.Web
 *  _Bootstrapper.cs_ - manages dependency injection for IDataSource
 *  _Scripts/app.js_ - runs the UX
 *  _Controllers.ABaseDataSourceController_ - configures an IDataSourceInstance
 *  _Controllers.NewsFeedController_ 
-1.  /Newsfeed/Index - renders the newsfeed UI 
-2.  /NewsFeed/Page/{number} - returns a Json array of articles
+   +  **/Newsfeed/Index** - renders the newsfeed UI 
+   +  **/NewsFeed/Page/{number}** - returns a Json array of articles
 
