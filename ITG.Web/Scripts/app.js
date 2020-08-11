@@ -26,21 +26,27 @@ const articleTemplate = (article) => {
 }
 
 // binds a click handler to expand/collapse articles
-// mode = { keepOpen | accordion } controls the behaviour
 const bindExpandableElements = () => {
-    $(".article").not(".expandable")
+    $(".article")
+    .not(".expandable")
     .addClass("expandable")
     .each((index, element) => {
-        $(element).on("click", function(){
-            if(mode === "keepOpen"){
-                $(this).toggleClass("expanded");
-            }
-            else {
-                $(".expanded").removeClass("expanded");
-                $(this).addClass("expanded");
-            }
-        });
+        $(element).on("click", (e) =>  { toggleExpanded(e) });
     });
+}
+
+// expands and collapses articles
+// mode = { keepOpen | accordion } controls the behaviour
+const toggleExpanded = (evt) => {
+    var el = evt.currentTarget;
+
+    if(mode === "keepOpen"){
+        $(el).toggleClass("expanded");
+    }
+    else {
+        $(".expanded").removeClass("expanded");
+        $(el).addClass("expanded");
+    }
 }
 
 // loads in a new set of articles and updates the UI
@@ -62,6 +68,7 @@ const loadMoreArticles = () => {
             bindExpandableElements();
             $("#loadMore").removeClass("hidden");
             $("#loadMore")[0].scrollIntoView();
+
         } else {
             $("#allArticlesLoaded").removeClass("hidden");
         }
@@ -70,7 +77,7 @@ const loadMoreArticles = () => {
 
 // configures the UI and loads the first batch of articles
 var init = () => {
-    $("#loadMore").on("click", () => {loadMoreArticles(); });
+    $("#loadMore").on("click", () => { loadMoreArticles(); });
     loadMoreArticles();
 }
 
