@@ -13,7 +13,7 @@ namespace ITG.Models.MetaData
         public int PageCount
         {
             // PageCount is never going to be a large number
-            // Cieling has different implementations for decimals and doubles
+            // Ceiling has different implementations for decimals and doubles
             get { return (int)Math.Ceiling((double)(ArticleCount / PageSize)); } 
         }
     }
