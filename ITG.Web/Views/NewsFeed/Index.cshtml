@@ -1,0 +1,23 @@
+﻿@using ITG.Web.Models;
+
+@model NewsFeedViewModel
+
+@{
+    ViewBag.Title = "News Feed Demo";
+}
+
+<div class="container">
+    <div class="header">
+        <h1>News Feed</h1>
+    </div>
+    <div id="articleContainer"></div>
+    <div class="footer">
+        <button id="loadMore" class="hidden">Load More</button>
+        <div id="loading">[ loading ]</div>
+        <div id="allArticlesLoaded" class="hidden">[ end of feed ]</div>
+    </div>
+</div>
+
+@section scripts {
+    <script src="~/Scripts/app.js"></script>
+}
