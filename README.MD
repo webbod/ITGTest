@@ -1,6 +1,6 @@
 # ITG Technical test
 
-Render a newsfeed, dynamically loading pages of articles - targets dot net core
+Render a newsfeed, dynamically loading pages of articles - migrated from MVC4 to target dotNet core
 
 ## ITG.Models
 *  _Configuration.DataSourceConfiguration_ - manages page size and connnect settings
