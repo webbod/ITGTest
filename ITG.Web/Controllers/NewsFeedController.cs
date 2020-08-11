@@ -21,16 +21,15 @@ namespace ITG.Web.Controllers
         private void ConfigureDataSource(IDataSource dataSource)
         {
             // get the configuration infromation from web.config
-            var fileName = ConfigurationManager.AppSettings["Articles.TestDataSourceFile"];
-            var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,"App_Data", fileName);
-            var pageSize = Int32.Parse(ConfigurationManager.AppSettings["Articles.PageSize"]);
+            var connectionSettings = ConfigurationManager.AppSettings["DataSource.ConnectionSettings"];
+            var pageSize = Int32.Parse(ConfigurationManager.AppSettings["DataSource.PageSize"]);
 
-            if (string.IsNullOrEmpty(fileName) || pageSize < 1)
+            if (string.IsNullOrEmpty(connectionSettings) || pageSize < 1)
             {
                 throw new ConfigurationErrorsException();
             }
 
-            var config = new DataSourceConfiguration{ ConnectionSettings = path, PageSize = pageSize};
+            var config = new DataSourceConfiguration { ConnectionSettings = connectionSettings, PageSize = pageSize };
 
             dataSource.Configure(config);
 

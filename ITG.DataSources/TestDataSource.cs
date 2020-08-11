@@ -23,7 +23,12 @@ namespace ITG.DataSources
 
         public override void Configure(Models.Configuration.DataSourceConfiguration config)
         {
-            _Path = config.ConnectionSettings;
+            // ensure the path to the file is in the correct format
+            var path = config.ConnectionSettings.Replace('/','\\');
+            path = path.Substring(0,1) == "~" ? path.Substring(1) : path;
+            path = path.Substring(0,1) == "\\" ? path.Substring(1) : path;
+
+            _Path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, path);
             
             _MetaData = new ArticleListMetaData { PageSize = config.PageSize };
         }
