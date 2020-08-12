@@ -1,9 +1,3 @@
-﻿// visual studio 2013 lints against an early spec of javascript 
-// and doesn't recognise arrow functions or string interpolation
-
-// I am using jQuery because it was fairly standard with MV4
-
-
 // constants
 var keepOpen = "keepOpen";
 var accordion = "accordion";
