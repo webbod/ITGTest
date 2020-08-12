@@ -16,6 +16,7 @@ Render a newsfeed, dynamically loading pages of articles - migrated from MVC4 to
 
 ## ITG.Web
 *  _Startup.cs_ - manages dependency injection for IDataSource
+*  _wwwroot/css/site.css_ - configures the UI
 *  _wwwroot/js/newsfeed.js_ - runs the UX
 *  _Controllers.ABaseDataSourceController_ - configures an IDataSourceInstance
 *  _Controllers.NewsFeedController_ 
